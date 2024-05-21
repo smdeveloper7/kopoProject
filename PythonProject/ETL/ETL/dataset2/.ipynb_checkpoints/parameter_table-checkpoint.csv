@@ -1,0 +1,4 @@
+,dbPrefix,dbId,dbPw,dbIp,dbPort,dbName,requestDB
+0,oracle,oracle_id,oracle_pw,oracle_ip,1521,oracle_db,O
+1,postgre,postgre_id,postgre_pw,postgre_ip,5432,postgre_db,O
+2,mariadb,mariadb_id,mariadb_pw,mariadb_ip,3306,mariadb_db,O

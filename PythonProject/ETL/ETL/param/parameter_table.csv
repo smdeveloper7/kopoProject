@@ -1,0 +1,7 @@
+type,dbServer,dbPrefix,dbId,dbPw,dbIp,dbPort,dbName,etcValue,use_yn
+filePath,,,,,,,,../dataset2,Y
+filePath,,,,,,,,../dataset3,Y
+db,oracle,oracle+cx_oracle,root,example,example,1521,orcl,,N
+db,postgre,postgresql,root,example,example,5432,postgre,,N
+db,mariadb,mysql+pymysql,root,example,example,3306,mariadb,,N
+db,mysql,mysql,root,1234,localhost,3306,webui,,Y
