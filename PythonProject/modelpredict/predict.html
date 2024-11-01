@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>분석 페이지</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .image-container {
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      </style>
+</head>
+
+<body>
+
+<!-- Intro Section -->
+<section class="intro-section text-center bg-dark text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="display-6"> 머신러닝-전상문 </h1>
+                <!-- <p class="lead"> <a href="https://www.youtube.com/hkcode" style="color: yellow;">www.youtube.com/hkcode </a></p> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 탭 메뉴 추가 -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="true">예측#1</a>
+    </li>
+    <!-- <li class="nav-item" role="presentation">
+        <a class="nav-link" id="analysis-tab" data-toggle="tab" href="#analysis" role="tab" aria-controls="analysis" aria-selected="false">예측#2</a>
+    </li> -->
+</ul>`
+
+   
+
+<!-- 탭 내용 추가 -->
+<div class="tab-content" id="myTabContent">
+
+    <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
+        
+        <!-- 첫번째 탭  -->
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h1 class="mb-3 text-center" style="font-size: 20px;"  > 혈당 수치 예측 페이지  </h1>
+                    <
+                    <br>
+                                        <!-- Add the image here -->
+                    <div id="imageContainer">
+                        <!-- <label> {특성} 값 입력 시 {라벨}값을 예측합니다. </label> -->
+                        <!-- <label> ['HCLUS', 'PRO_PERCENT', 'HO_YN', 'PRO_YN'] </label> -->
+                        <!-- <img src="/images/sample_anal_page.png" alt="slab_predict.png" class="img-fluid"> -->
+                    </div>
+                    <br>
+                    <form>
+                        <div class="form-group">
+                            <label for="input1">식사 전후 </label>
+                            <select id="when_eat">
+                                <option selected value="0">공복(8시간이상)</option>
+                                <option value="1">식후(2시간)</option>
+                                <option value="2">식후(4시간)</option>
+                                <option value="3">식후(5시간)</option>
+                            </select>
+                        </div>
+                        <div class="form-group labelVal val0">
+                            <label for="input1">근육량(smm)</label>
+                            <input id="smm" name="smm"  type="text" class="form-control text" placeholder="값을 입력하세요">
+                        </div>
+                        <div class="form-group labelVal val1 val2">
+                            <label for="input2">체지방량(pbf)</label>
+                            <input id="pbf" name="pbf" type="text" class="form-control text"  placeholder="값을 입력하세요">
+                        </div>
+ 
+                         <div class="form-group labelVal val2">
+                            <label for="input3">기초대사량(bmr)</label>
+                            <input id="bmr" name="bmr" type="text" class="form-control text"  placeholder="값을 입력하세요">
+                        </div>
+
+                        <div class="form-group labelVal val3">
+                            <label for="input4">체질량 지수(bmi)</label>
+                            <input id="bmi" name="bmi" type="text" class="form-control text"  placeholder="값을 입력하세요">
+                        </div>
+                        <div class="form-group  labelVal val3">
+                            <label for="input4">체중(wt)</label>
+                            <input id="wt" name="wt" type="text" class="form-control text"  placeholder="값을 입력하세요">
+                        </div>
+
+                        <button type="button" class="btn btn-success btn-block " id="showImage">샘플데이터 보기</button>
+
+                 
+                        <div class="image-container" id="hideImage">
+                          <img src="../images/sample.png" alt="Sample Image">
+                          <!-- <button id="hideImage">X</button> -->
+                        </div>
+                        <label for="input4">샘플 데이터에는 테스트할때 사용한 데이터와 feature의 정보가 있습니다.</label>
+                        <br>
+                        <button type="button" class="btn btn-primary btn-block" id="prdBtn">분석 시작</button>
+                        <div id=baseResult></div>
+                        <!-- <div class="form-group" id="result_wrap">
+                            <label id="input4">예측결과 </label>
+                        </div> -->
+                     </form>
+                    <div class="mt-4" id="result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="analysis" role="tabpanel" aria-labelledby="analysis-tab">
+        <!-- 기존 분석 페이지 내용 -->
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h1 class="mb-3 text-center" style="font-size: 20px;"  > 예측 페이지 #2 </h1>
+                    <label>준비중</label>
+                    <div class="mt-4" id="result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    // 새로운 탭 클릭 시 해당 탭으로 이동하는 함수
+    $(".labelVal").hide();
+    $(".val"+0).show();
+    $(document).ready(function() {
+        $('#new-tab').on('click', function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        });
+        $("#showImage").click(function(){
+            $(".image-container").fadeIn();
+        });
+
+        $("#hideImage").click(function(){
+            $(".image-container").fadeOut();
+        });
+        $("#when_eat").on('change',function(e){
+            e.preventDefault();
+            const labelVal = $(this).val();
+            $(".labelVal").hide();
+            $(".val"+labelVal).show();
+        });
+        $('.text').on('input', function(){
+        // 입력된 값 중 숫자가 아닌 문자는 제거
+            $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        });
+    });
+
+</script>
+
+
+<script>
+    
+</script>
+
+
+<script>
+
+    // config.json 파일 로드
+    var newHostname = "localhost";
+    var newPort = "9999"
+
+      // 분석시작 버튼 클릭 시 분석서버와 연계 코드
+      $("#prdBtn").click(function(){
+        let when_eat = Number($("#when_eat").val());//식후시간
+        let smm = Number($("#smm").val()); //근육량
+        let pbf = Number($("#pbf").val());
+        let wt = Number($("#wt").val());
+        let bmi = Number($("#bmi").val());
+        let bmr = Number($("#bmr").val());
+
+        
+        let urlBase = `http://${newHostname}:${newPort}`;
+
+        let urlFullBase = urlBase+"/predict1";
+
+        let reqDataBase = {
+          'when_eat': when_eat,
+          'smm': smm,
+          'pbf': pbf,
+          'wt': wt,
+          'bmi': bmi,
+          'bmr': bmr,
+        };
+        const headersBase = {
+          "Content-Type": "application/json"
+        };
+
+        const dataBase = JSON.stringify(reqDataBase);
+        
+
+        // ['HCLUS', 'PRO_PERCENT', 'HO_YN', 'PRO_YN']
+        $.ajax({
+          url: urlFullBase,
+          headers: headersBase,
+          data: dataBase,
+          method: 'POST',
+          success: function(data) {
+            $("#result").append(`<div> 예상 혈당 수치는 : ${data.result}</div>`);
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
